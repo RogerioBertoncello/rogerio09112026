@@ -1,0 +1,21 @@
+1 - Integração
+
+Na primeira versão, não retornava as mensagens de erro 400 e 404.
+Solicitado correção com novo prompt.
+
+2 - API e Validação
+
+400 — Bad Request
+O cliente enviou dados inválidos ou incompletos.
+
+404 — Not Found
+O recurso solicitado não existe.
+
+409 — Conflict
+Há conflito na requisição (ex.: tentativa de criar registro duplicado ou estado inconsistente).
+
+3 - Uso da IA / Prompt
+
+"crie uma aplicação backend com os métodos get, post, put e delete em java com spring boot e conexão com banco de dados mysql, use como tema um sistema de controle de livros de uma biblioteca com opções de busca, inserção, atualização e deleção de equipamentos, crie uma interface onde o usuário possa digitar os dados que deseja buscar, inserir, atualizar e deletar, e exibir ao usuário as mensagens de erro retornadas pela api, exemplo 400, 404 e 409, utilizar spring boot com as dependências spring web, spring data jpa, validation e mysql driver, aplique validação com bean validation e trate os erros: id inexistente retorna 404 e isbn duplicado retorna 409, nenhuma consulta pode ser montada concatenando texto recebido na requisição por risco de sql injection, configure o cors no backend para permitir a origem do frontend"
+
+"as mensagens de erro 400 e 404 não estão aparecendo para o usuário, somente a 409"

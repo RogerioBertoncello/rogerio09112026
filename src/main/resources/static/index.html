@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Acervo — Biblioteca</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="/" aria-label="Acervo, início">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>acervo<span class="brand-dot">.</span></span>
+    </a>
+    <span class="topbar-caption">GESTÃO DE BIBLIOTECA</span>
+</header>
+
+<main class="layout">
+    <section class="intro">
+        <p class="eyebrow">CATÁLOGO DA BIBLIOTECA</p>
+        <h1>Livros que<br><span>abrem mundos.</span></h1>
+        <p class="intro-copy">Organize seu acervo com cuidado. Encontre, cadastre e mantenha cada história em seu lugar.</p>
+        <div class="book-illustration" aria-hidden="true">
+            <div class="sun"></div>
+            <div class="book book-one"></div>
+            <div class="book book-two"></div>
+            <div class="book book-three"></div>
+            <div class="illustration-base"></div>
+            <span class="illustration-star star-one">✳</span>
+            <span class="illustration-star star-two">✳</span>
+        </div>
+        <div class="intro-note"><span class="note-mark">✳</span> Um bom livro sempre merece ser encontrado.</div>
+    </section>
+
+    <section class="workspace" aria-label="Gerenciamento do catálogo">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SEU ACERVO</p>
+                <h2>Gerenciar livros</h2>
+            </div>
+            <span class="book-count" id="book-count">0 livros</span>
+        </div>
+
+        <section class="panel search-panel" aria-labelledby="search-heading">
+            <div class="panel-heading">
+                <div class="panel-icon search-icon" aria-hidden="true">⌕</div>
+                <div><h3 id="search-heading">Encontre um livro</h3><p>Busque por título, autor, ISBN ou ID.</p></div>
+            </div>
+            <form id="search-form" class="search-fields">
+                <label class="field search-title">Título<input name="title" type="search" placeholder="Ex.: O pequeno príncipe"></label>
+                <label class="field">Autor<input name="author" type="search" placeholder="Nome do autor"></label>
+                <label class="field">ISBN<input name="isbn" type="search" placeholder="Somente um ISBN exato"></label>
+                <label class="field">ID do livro<input name="id" type="search" inputmode="numeric" placeholder="Busca exata por ID"></label>
+                <div class="search-actions">
+                    <button class="button button-dark" type="submit">Buscar livros <span aria-hidden="true">→</span></button>
+                    <button class="button button-quiet" id="clear-search" type="button">Limpar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel form-panel" aria-labelledby="form-heading">
+            <div class="panel-heading form-heading">
+                <div class="panel-icon add-icon" aria-hidden="true">+</div>
+                <div><h3 id="form-heading">Adicionar ao catálogo</h3><p>Preencha os dados do livro abaixo.</p></div>
+            </div>
+            <form id="book-form" novalidate>
+                <input name="id" type="hidden">
+                <div class="form-grid">
+                    <label class="field field-wide">Título do livro <span class="required">*</span>
+                        <input name="title" required maxlength="160" placeholder="Ex.: Cem anos de solidão">
+                    </label>
+                    <label class="field">Autor <span class="required">*</span>
+                        <input name="author" required maxlength="120" placeholder="Nome completo">
+                    </label>
+                    <label class="field">ISBN <span class="required">*</span>
+                        <input name="isbn" required maxlength="13" pattern="([0-9]{9}[0-9Xx]|97[89][0-9]{10})" title="ISBN-10 ou ISBN-13, sem espaços ou hífens" placeholder="9788535914849">
+                    </label>
+                    <label class="field">Ano de publicação
+                        <input name="publicationYear" type="number" min="1000" max="2100" placeholder="Ex.: 1967">
+                    </label>
+                    <label class="field">Gênero
+                        <input name="genre" maxlength="80" placeholder="Ex.: Romance">
+                    </label>
+                    <label class="field field-wide">Descrição
+                        <textarea name="description" rows="2" maxlength="1000" placeholder="Uma breve descrição (opcional)"></textarea>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button class="button button-accent" id="save-button" type="submit">Adicionar livro <span aria-hidden="true">↗</span></button>
+                    <button class="button button-quiet hidden" id="cancel-edit" type="button">Cancelar edição</button>
+                    <span class="form-hint"><span class="required">*</span> Campos obrigatórios</span>
+                </div>
+            </form>
+        </section>
+
+        <div id="notice" class="notice hidden" role="status" aria-live="assertive" tabindex="-1"></div>
+
+        <section class="results" aria-labelledby="results-heading">
+            <div class="results-heading">
+                <h3 id="results-heading">Livros cadastrados</h3>
+                <span id="results-summary"></span>
+            </div>
+            <div id="book-list" class="book-list"></div>
+        </section>
+    </section>
+</main>
+<footer>Feito para cuidar de boas histórias <span aria-hidden="true">✳</span></footer>
+</body>
+</html>
